@@ -1,0 +1,16 @@
+service: linkedin-parser
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: us-east-1
+
+plugins:
+  - serverless-offline
+
+functions:
+  transfer:
+    handler: app.handler
+    timeout: 900
+    events:
+      - schedule: rate(1 minute)
